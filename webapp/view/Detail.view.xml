@@ -1,0 +1,132 @@
+<mvc:View
+	controllerName="bh.fsdummyes.controller.Detail"
+	xmlns="sap.uxap"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:mvc="sap.ui.core.mvc">
+
+<ObjectPageLayout
+        id="ObjectPageLayout"
+		showTitleInHeaderContent="true"
+		alwaysShowContentHeader="false"
+		preserveHeaderStateOnScroll="false"
+		headerContentPinnable="true"
+		isChildPage="true"
+		upperCaseAnchorBar="false">     
+
+     <headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+            <navigationActions>
+					<m:OverflowToolbarButton
+                        id="idFullScr"
+						type="Transparent"
+						icon="sap-icon://full-screen"
+						press=".handleFullScreen"
+						tooltip="Enter Full Screen Mode" />
+                    <m:OverflowToolbarButton
+                        id="idExitScr"
+						type="Transparent"
+						icon="sap-icon://exit-full-screen"
+						press=".handleExitFullScreen"
+						tooltip="Exit Full Screen Mode"/>
+					<m:OverflowToolbarButton
+                        id="idCancel"
+						type="Transparent"
+						icon="sap-icon://decline"
+						press=".handleClose"
+						tooltip="Close column" />
+						<!-- visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/> -->
+				</navigationActions>
+                </ObjectPageDynamicHeaderTitle>
+	</headerTitle>    	
+
+        <headerContent>
+			<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
+				<f:Avatar
+                    src= "https://sapui5.hana.ondemand.com/{products1>ProductPicUrl}"
+					displaySize="L"
+					displayShape="Square"
+					class="sapUiTinyMarginEnd">
+				</f:Avatar>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Category"/>
+                    <m:Text text="{Category}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Name"/>
+                    <m:Text text="{Name}"/>
+				</m:VBox>
+				<m:VBox justifyContent="Center" class="sapUiSmallMarginEnd">
+					<m:Label text="Description"/>
+                    <m:ObjectNumber number="{Description}" emphasized="false"/>
+				</m:VBox>
+			</m:FlexBox>
+		</headerContent>	 
+        <sections>
+            <ObjectPageSection title="Sales Items">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+		<m:Table items="{ToSalesOrderLineItems}" growing="true" growingDirection="Downwards" growingThreshold="20"
+	       mode="SingleSelectMaster" selectionChange="onSaleSel">
+		<m:columns>
+			<m:Column>
+				<m:Text text="Sales Order"/>
+			</m:Column>
+			<m:Column>
+				<m:Text text="Gross Amount"/>
+			</m:Column>
+			<m:Column>
+				<m:Text text="Item Nr."/>
+			</m:Column>
+			<m:Column>
+				<m:Text text="Description"/>
+			</m:Column>
+		</m:columns>
+		<m:items>
+			<m:ColumnListItem id="oSalesDet">
+		<m:cells>
+			<m:ObjectIdentifier title="{SalesOrderID}" titleActive="true" titlePress="titleClicked"/>
+			<m:ObjectIdentifier
+			   title="{ parts:[{path: 'GrossAmount'},{path:'CurrencyCode'}], type:'sap.ui.model.type.Currency', formatOptions:{showMeasure:true} }"/>
+			   
+			<m:Text text="{ItemPosition}"/>
+			<m:Text text="{Quantity}" />
+		</m:cells>
+	</m:ColumnListItem>
+		</m:items>
+	</m:Table>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+            <ObjectPageSection title="Suppliers">
+				<subSections>
+					<ObjectPageSubSection>
+						<blocks>
+							<form:SimpleForm id="idForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="3" labelSpanL="3"
+			labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1"
+			columnsL="1" columnsM="1" singleContainerFullSize="false">	
+            <form:content>
+									<m:Label text="Company Name"/>
+                                    <m:Text text="{CompanyName}"/>                                    
+									<m:Label text="Email"/>
+                                    <m:Text text="{WebAddress}"/>
+									<m:Label text="Email Address"/>
+                                    <m:Text text="{EmailAddress}"/>
+                                    <m:Label text="Phone Number"/>
+                                    <m:Text text="{PhoneNumber}"/>
+                                    <m:Label text="Fax Number"/>
+                                    <m:Text text="{FaxNumber}"/>
+								</form:content>
+							</form:SimpleForm>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+        </sections>
+        </ObjectPageLayout>
+
+    
+</mvc:View>
