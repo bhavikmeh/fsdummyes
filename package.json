@@ -1,36 +1,29 @@
 {
-	"name": "fsdummyes",
-	"version": "0.0.1",
-	"private": true,
-	"sapuxLayer": "CUSTOMER_BASE",
-	"description": "A Fiori application.",
-	"keywords": [
-		"ui5",
-		"openui5",
-		"sapui5"
-	],
-	"main": "webapp/index.html",
-	"scripts": {
-		"start": "fiori run --open 'test/flpSandbox.html?sap-client=002'",
-		"start-local": "fiori run --config ./ui5-local.yaml --open 'test/flpSandboxMockServer.html?sap-client=002'",
-		"start-noflp": "fiori run --open 'index.html?sap-client=002'",
-		"build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo",
-		"deploy": "fiori verify",
-		"deploy-config": "fiori add deploy-config",
-		"unit-tests": "fiori run --open test/unit/unitTests.qunit.html",
-		"int-tests": "fiori run --open test/integration/opaTests.qunit.html",
-		"start-mock": "fiori run --open 'test/flpSandboxMockServer.html?sap-client=002'"
-	},
-	"devDependencies": {
-		"@ui5/cli": "^2.11.1",
-		"@ui5/fs": "^2.0.6",
-		"@ui5/logger": "^2.0.1",
-		"@sap/ux-ui5-tooling": "1",
-		"rimraf": "3.0.2"
-	},
-	"ui5": {
-		"dependencies": [
-			"@sap/ux-ui5-tooling"
-		]
-	}
+  "name": "fsdummyes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "fiori run --open index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhavikmeh/fsdummyes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bhavikmeh/fsdummyes/issues"
+  },
+  "homepage": "https://github.com/bhavikmeh/fsdummyes#readme",
+  "ui5": {
+    "dependencies": [
+      "@sap/ux-ui5-tooling"
+    ]
+  },
+  "dependencies": {
+    "@sap/ux-specification": "^1.90.15",
+    "@sap/ux-ui5-tooling": "^1.4.3"
+  } 
 }
